@@ -63,3 +63,6 @@ echo "To use it, type: vim"
 echo "This alias is only available in the current shell session."
 echo "To make it permanent, add the alias to your shell's startup file (e.g., ~/.bashrc, ~/.zshrc)."
 echo "Example: echo \"alias vim='$VIM_TEMP_FILE -u $VIMRC_TEMP_FILE'\" >> ~/.bashrc"
+
+# Unset the 'exit on error' option to avoid affecting the user's shell
+set +e
