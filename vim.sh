@@ -43,9 +43,9 @@ VIMRC_TEMP_FILE=$(mktemp)
 # Download the vim binary to the temporary file
 echo "Downloading vim for $ARCH..."
 if command -v curl >/dev/null 2>&1; then
-    curl -L -o "$VIM_TEMP_FILE" "$URL"
+    curl -sL -o "$VIM_TEMP_FILE" "$URL"
 elif command -v wget >/dev/null 2>&1; then
-    wget -O "$VIM_TEMP_FILE" "$URL"
+    wget -qO "$VIM_TEMP_FILE" "$URL"
 else
     echo "Neither curl nor wget are installed. Please install one of them to proceed."
     exit 1
