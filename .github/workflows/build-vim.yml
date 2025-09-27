@@ -1,0 +1,30 @@
+name: Build Vim
+
+on:
+  schedule: [cron: "59 23 * * Sun"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - arch: amd64
+            os: ubuntu-latest
+          - arch: arm64
+            os: ubuntu-24.04-arm
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build vim
+        run: |
+          mkdir -p out
+          cat build-vim.sh | docker run --rm -i \
+            -v "${{ github.workspace }}/out":/out \
+            alpine sh
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vim-${{ matrix.arch }}
+          path: out/vim-*
+          overwrite: true
