@@ -22,9 +22,11 @@ jobs:
           cat build-vim.sh | docker run --rm -i \
             -v "${{ github.workspace }}/out":/out \
             alpine sh
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+          echo "VIM_VERSION=$(/out/vim --version | head -1 | cut -d'(' -f1 | awk '{print $NF}')" >> $GITHUB_ENV
+          mv /opt/vim /opt/vim-${{ matrix.arch }}
+      - uses: ncipollo/release-action@v1
         with:
-          name: vim-${{ matrix.arch }}
-          path: out/vim-*
-          overwrite: true
+          name: Tiny Vim ${{ env.VIM_VERSION }}
+          body: Built on
+          artifacts: out/vim-${{ matrix.arch }}
+          allowUpdates: true

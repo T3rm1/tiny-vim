@@ -6,5 +6,5 @@ cd /opt/vim
 LDFLAGS="-static" ./configure --with-tlib=ncursesw --with-features=tiny
 make
 make install
-upx -q --lzma -o /out/vim-$(arch) /usr/local/bin/vim
-chown $(stat -c '%u:%g' /out) /out/vim-$(arch)
+upx -q --lzma -o /out/vim /usr/local/bin/vim
+chown $(stat -c '%u:%g' /out) /out/vim
