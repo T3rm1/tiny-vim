@@ -35,10 +35,10 @@ case "$ARCH" in
 esac
 
 # Create a temporary file to store the vim binary
-VIM_TEMP_FILE=$(mktemp)
+VIM_TEMP_FILE=$(mktemp -t vim.XXXXXX)
 
 # Create an empty temporary file for vimrc - this prevents E1187: Failed to source defaults.vim
-VIMRC_TEMP_FILE=$(mktemp)
+VIMRC_TEMP_FILE=$(mktemp -t vimrc.XXXXXX)
 
 # Download the vim binary to the temporary file
 echo "Downloading vim for $ARCH..."
