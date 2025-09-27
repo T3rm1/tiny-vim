@@ -27,6 +27,6 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           name: Tiny Vim ${{ env.VIM_VERSION }}
-          body: Built on
+          tag: ${{ env.VIM_VERSION }}
           artifacts: out/vim-${{ matrix.arch }}
           allowUpdates: true
