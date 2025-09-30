@@ -30,3 +30,4 @@ jobs:
           tag: ${{ env.VIM_VERSION }}
           artifacts: out/vim-${{ matrix.arch }}
           allowUpdates: true
+          omitBodyDuringUpdate: true
