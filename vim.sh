@@ -39,6 +39,7 @@ VIM_TEMP_FILE=$(mktemp -t vim.XXXXXX)
 
 # Create an empty temporary file for vimrc - this prevents E1187: Failed to source defaults.vim
 VIMRC_TEMP_FILE=$(mktemp -t vimrc.XXXXXX)
+echo "set nocompatible" >> $VIMRC_TEMP_FILE
 
 # Download the vim binary to the temporary file
 echo "Downloading vim for $ARCH..."
